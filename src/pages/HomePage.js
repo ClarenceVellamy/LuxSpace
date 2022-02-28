@@ -11,7 +11,7 @@ import Footer from 'parts/Footer'
 function HomePage() {
   return (
     <>
-        <Header/>
+        <Header theme='white' position="absolute" />
         <Hero/>
         <BrowseRoom/>
         <JustArrived/>

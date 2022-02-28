@@ -1,24 +1,36 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 
-function Breadcrumb() {
+import { Link } from 'react-router-dom'
+
+export default function Breadcrumb({list}) {
   return (
     <section className="bg-gray-100 py-8 px-4">
       <div className="container mx-auto">
         <ul className="breadcrumb">
-          <li>
-            <a href="Breadcrumb.html">Home</a>
-          </li>
-          <li>
+
+          {list?.map?.((item, index) =>{
+            const arias = index === list?.length? { 'aria-label' : 'current-page'} : {}
+            return (
+              <li key={item.url} {...arias}>
+                <Link to={item.url}>{item.name}</Link>
+              </li>
+            )
+          })}
+          
+          {/* <li>
             <a href="#">Office Room</a>
           </li>
           <li>
             <a href="#" aria-label="current-page">Details</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </section>
   )
 }
 
-export default Breadcrumb
+Breadcrumb.propTypes = {
+  list: propTypes.array.isRequired
+}
+
